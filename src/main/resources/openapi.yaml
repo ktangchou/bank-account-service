@@ -1,0 +1,259 @@
+openapi: 3.0.3
+info:
+  description: Bank Account API to retrieve bank account data
+  title: Bank Account API
+  version: 1.0.0
+servers:
+- description: Developer server
+  url: http://localhost:9999
+tags:
+- description: methods that provide access to information and operations relating
+    to bank accounts
+  name: bankAccounts
+paths:
+  /accounts:
+    get:
+      description: Find all bank accounts in guide
+      operationId: findBankAccounts
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/BankAccount'
+                type: array
+          description: Bank accounts successfully retrieved
+        "502":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Bad Gateway error
+      summary: Find all bank accounts in guide
+      tags:
+      - bankAccounts
+      x-accepts: application/json
+      x-tags:
+      - tag: bankAccounts
+    post:
+      description: Add a new bank account
+      operationId: addBankAccount
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BankAccount'
+        description: Create a new bank account
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BankAccount'
+          description: Bank account successfully created
+        "502":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Bad Gateway error
+      summary: Add a new bank account
+      tags:
+      - bankAccounts
+      x-content-type: application/json
+      x-accepts: application/json
+      x-tags:
+      - tag: bankAccounts
+    put:
+      description: Update an existing bank account by id
+      operationId: updateBankAccount
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BankAccount'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/BankAccount'
+        description: Update an existing bank account
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BankAccount'
+          description: Bank account successfully updated
+        "400":
+          description: Invalid ID supplied
+        "404":
+          description: Bank account not found
+        "502":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Bad Gateway error
+      summary: Update an existing bank account
+      tags:
+      - bankAccounts
+      x-content-type: application/json
+      x-accepts: application/json
+      x-tags:
+      - tag: bankAccounts
+  /accounts/{accountId}:
+    delete:
+      description: Deletes a bank account
+      operationId: deleteBankAccount
+      parameters:
+      - description: Bank account ID to delete
+        explode: false
+        in: path
+        name: accountId
+        required: true
+        schema:
+          format: int64
+          type: integer
+        style: simple
+      responses:
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: The specified resource was not found
+      summary: Deletes a bank account
+      tags:
+      - bankAccount
+      x-accepts: application/json
+      x-tags:
+      - tag: bankAccount
+    get:
+      description: Return a specific bank account by its ID.
+      operationId: fetchBankAccountById
+      parameters:
+      - description: ID of account to return
+        explode: false
+        in: path
+        name: accountId
+        required: true
+        schema:
+          format: int64
+          type: integer
+        style: simple
+      responses:
+        "200":
+          description: Bank account successfully found
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: The specified resource was not found
+      summary: Find banck account by ID
+      tags:
+      - bankAccount
+      x-accepts: application/json
+      x-tags:
+      - tag: bankAccount
+components:
+  parameters:
+    name:
+      explode: false
+      in: path
+      name: name
+      required: true
+      schema:
+        type: string
+      style: simple
+  responses:
+    NotFound:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+      description: The specified resource was not found
+    BadGateway:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+      description: Bad Gateway error
+  schemas:
+    BankAccount:
+      example:
+        balance: 0.8008281904610115
+        id: id
+        transactions:
+        - date: 2000-01-23
+          transactionType: null
+          amount: 6.027456183070403
+          id: id
+        - date: 2000-01-23
+          transactionType: null
+          amount: 6.027456183070403
+          id: id
+      properties:
+        id:
+          description: account id
+          type: string
+        balance:
+          description: account balance
+          type: number
+        transactions:
+          description: account transactions history
+          items:
+            $ref: '#/components/schemas/Transaction'
+          type: array
+      required:
+      - balance
+      - id
+      - transactions
+    Transaction:
+      example:
+        date: 2000-01-23
+        transactionType: null
+        amount: 6.027456183070403
+        id: id
+      properties:
+        id:
+          description: transaction id
+          type: string
+        date:
+          format: date
+          type: string
+        amount:
+          description: transaction amount
+          type: number
+        transactionType:
+          $ref: '#/components/schemas/TransactionType'
+      required:
+      - amount
+      - date
+      - id
+      - transactionType
+    TransactionType:
+      description: Type de transaction
+      enum:
+      - WITHDRAWAL
+      - DEPOSIT
+      type: string
+    Error:
+      example:
+        code: 1
+        type: type
+        message: message
+      properties:
+        code:
+          format: int32
+          type: integer
+        type:
+          type: string
+        message:
+          type: string
+      required:
+      - code
+      - message
+      - type

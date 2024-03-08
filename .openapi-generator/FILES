@@ -1,0 +1,10 @@
+README.md
+src/main/gen/io/ktc/bankaccountservice/generated/api/AccountsApi.java
+src/main/gen/io/ktc/bankaccountservice/generated/api/ApiUtil.java
+src/main/gen/io/ktc/bankaccountservice/generated/model/BankAccount.java
+src/main/gen/io/ktc/bankaccountservice/generated/model/DepositRequest.java
+src/main/gen/io/ktc/bankaccountservice/generated/model/Error.java
+src/main/gen/io/ktc/bankaccountservice/generated/model/GetTransactionsResponse.java
+src/main/gen/io/ktc/bankaccountservice/generated/model/Transaction.java
+src/main/gen/io/ktc/bankaccountservice/generated/model/TransactionType.java
+src/main/gen/io/ktc/bankaccountservice/generated/model/WithdrawRequest.java

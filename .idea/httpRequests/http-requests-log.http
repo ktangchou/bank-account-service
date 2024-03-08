@@ -1,0 +1,90 @@
+GET http://localhost:9999/accounts/2/transactions
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.9)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2024-03-08T082611.200.json
+
+###
+
+GET http://localhost:9999/accounts/1/transactions
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.9)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2024-03-08T082052.200.json
+
+###
+
+GET http://localhost:8082/api/v1/accounts/10
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.9)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2024-03-07T175323.404.txt
+
+###
+
+GET http://localhost:8082/api/v1/accounts/10
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.9)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2024-03-07T175151.500.json
+
+###
+
+GET http://localhost:8082/api/v1/accounts/10
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.9)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2024-03-07T174635.500.json
+
+###
+
+GET http://localhost:8082/api/v1/accounts/1
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.9)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2024-03-07T174631-1.200.json
+
+###
+
+GET http://localhost:8082/api/v1/accounts/1
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.9)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2024-03-07T174631.200.json
+
+###
+
+GET http://localhost:8082/api/v1/accounts/200
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.9)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2024-03-07T160426.500.json
+
+###
+
+GET http://localhost:8082/api/v1/accounts/2
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.9)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2024-03-07T160423.200.json
+
+###
+
+GET http://localhost:8082/api/v1/accounts/1
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.9)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2024-03-07T160418.200.json
+
+###
+
